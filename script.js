@@ -22,10 +22,10 @@ function displayMatches() {
 
         return `
         <li>
-            <span class="name">${cityName}, ${stateName}</span>
+            <span class="name">${cityName} ${`city`}, ${stateName} ${`state`}</span>
             <div class="separateTable">
-            <span class="population">${place.populationIn2001}</span><br>
-            <span class="population">${place.populationIn2011}</span>
+            <span class="population">${place.populationIn2001} ${`<h6>(2001)</h6>`}</span>
+            <span class="population">${place.populationIn2011} ${`<h6>(2011)</h6>`}</span>
             </div>
         </li>
         `;
