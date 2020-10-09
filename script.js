@@ -17,12 +17,13 @@ function displayMatches() {
     const matchArray = findMatches(this.value, cities);
     const html = matchArray.map(place => {
         const regex = new RegExp(this.value, 'gi');
+        const cityRank = place.rank.replace(regex, `<span class="hl">${this.value}</span>`);
         const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
         const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
 
         return `
         <li>
-            <span class="name">${cityName} ${`city`}, ${stateName} ${`state`}</span>
+            <span class="name">${cityRank}${`)`} ${cityName} ${`city`}, ${stateName} ${`(state)`}</span>
             <div class="separateTable">
             <span class="population">${place.populationIn2001} ${`<h6>(2001)</h6>`}</span>
             <span class="population">${place.populationIn2011} ${`<h6>(2011)</h6>`}</span>
@@ -32,8 +33,6 @@ function displayMatches() {
     }).join('');
     suggestions.innerHTML = html;
 }
-
-
 
 const searchInput = document.querySelector('.search');
 const suggestions = document.querySelector('.suggestions');
